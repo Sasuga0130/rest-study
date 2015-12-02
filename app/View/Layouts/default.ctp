@@ -13,7 +13,7 @@
  * @since         CakePHP(tm) v 0.10.0.1076
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
-
+/*
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 ?>
@@ -60,4 +60,26 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</div>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
+</html>*/
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>シンプルTODOアプリ</title>
+</head>
+<body>
+
+    <!-- ① js(library) -->
+    <script src="js/lib/jquery-2.1.3.min.js" type="text/javascript"></script>
+    <script src="js/lib/underscore-min.js" type="text/javascript"></script>
+    <script src="js/lib/backbone-min.js" type="text/javascript"></script>
+
+    <!-- js(application) -->
+    <!--  ② router   -->
+    <script src="js/routers/router.js" type="text/javascript"></script>
+    <!--  ③ entry point   -->
+    <script src="js/app.js" type="text/javascript"></script>
+
+</body>
 </html>
+
