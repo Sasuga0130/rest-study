@@ -1,5 +1,12 @@
 var app = app || {};
 (function(app) {
-    var todoRouter = new app.TodoRouter();  // ①
-    Backbone.history.start();               // ②
+           app.Application = Backbone.Marionette.Application.extend({
+               initialize : function(){
+                       new app.TodoRouter();
+               },
+
+               onStart : function(){
+                       Backbone.history.start();
+               },
+       });
 })(app);
