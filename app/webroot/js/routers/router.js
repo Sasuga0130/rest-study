@@ -7,11 +7,30 @@ var app = app || {};
             'todo-lists'        : 'todoLists',  
             'todo-lists/:id'    : 'todoDetail'
         },
+
+       currentView : false,
+
         todoLists : function() {
-            alert('TODO一覧表示');
+             //Todo一覧表示用ビューにルーティング
+            this.removeCurrentView();
+           this.nextView(app.TodoCollectionView);
         },
         todoDetail : function(id) {
-            alert('id = ' + id + ' のTODO詳細表示');
+           this.removeCurrentView();
+           this.nextView(app.TodoDetailView, id);
         },
+
+       nextView : function(View, option) {
+           if (document.getElementById('#content') === null) {
+               $('#main').append('<div id="content"/>');
+           }
+           this.currentView = new View(option);
+       },
+       removeCurrentView : function() {
+           if (this.currentView) {
+               this.currentView.remove();
+           }
+       }
+
     });
 })(app);
