@@ -1,10 +1,11 @@
-var app = app || {};
 
 //Todo一覧表示用コレクション
-(function(app) {
-    app.TodoCollection = Backbone.Collection.extend({
-        url : '/rest-study/todo_lists.json',
-        model : app.TodoModel,
+define(function(require) {
+   // app.TodoCollection = Backbone.Collection.extend({
+       var TodoModel = require('models/todo-model');
+       var TodoCollection =  Backbone.Collection.extend({
+	 url : '/rest-study/todo_lists.json',
+        model : TodoModel,
 
         parse : function(response) {
         //    コレクションをパース
@@ -12,4 +13,5 @@ var app = app || {};
             return response;
         }
     });
-})(app);
+	return TodoCollection;
+});
