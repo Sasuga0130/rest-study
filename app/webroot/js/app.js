@@ -64,7 +64,20 @@ define(function(require){
                this.clearLoginUser();
          //       未認証の場合ログイン画面に飛ばす
                Backbone.history.navigate('#login', {trigger : true, replace : true});
-           }else if(xhr.status >= 400 && xhr.status < 500){
+                      }else if(xhr.status === 400){
+               if(xhr.responseJSON){
+                   var errors = xhr.responseJSON.errors;
+                   var msg = '';
+                   for(var key in errors){
+                       for(var idx in errors[key]){
+                           msg = msg + errors[key][idx] + '\n';
+                       }
+                   }
+                   alert(msg);
+               }else{
+                   alert(message);
+               }
+           }else if(xhr.status > 400 && xhr.status < 500){
            //    ClientErrorの場合はメッセージ表示
                alert(message);
            }else if(xhr.status >= 500 && xhr.status < 600){

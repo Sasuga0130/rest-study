@@ -10,7 +10,8 @@ define(function() {
         ui : {
             todoStatus   : '#edit-todo',
             updateButton : '#updateTodo',
-            cancelButton : '#updateCancel'
+            cancelButton : '#updateCancel',
+	     userList     : '#user-list'
         },
 
        // DOMイベントハンドラ設定
@@ -22,17 +23,39 @@ define(function() {
         },
 
        // 初期化
-        initialize: function(){
+        initialize: function(options){
             _.bindAll( this, 'onSaveSuccess' );
-        },
+            this.userList = options.userList;
+            this.listenTo(this.model, 'invalid', this.renderErrorMessage);
+	 },
+
+       onRender : function() {
+          // ユーザ一覧を表示
+           this.showUserList(this.ui.userList, this.userList);
+        //   担当者を選択状態にする
+           this.ui.userList.val(this.model.attributes.assignee);
+       },
+
+      // ユーザ一覧を表示
+       showUserList : function($list, userList){
+           $.each(userList, function(index, userModel) {
+           $list.append(
+               "<option value='" 
+               + userModel.attributes.id + "'>"
+               + userModel.attributes.name + "</option>");
+           });
+	 },
 
        // 更新ボタンクリックのイベントハンドラ
         onUpdateClick : function() {
          //   テキストボックスから文字を取得
-            var todoString = this.ui.todoStatus.val();
-            this.model.save({
-                todo : todoString
-            }, {
+            var todoString = this.ui.todoStatus.val(); //todo
+	    var assigneeId = this.ui.userList.val();    // 担当者
+             this.model.set({
+                todo : todoString,
+		assignee : assigneeId
+            });
+	     this.model.save(null,{
                 silent : true,
                 success : this.onSaveSuccess,
             });
@@ -51,6 +74,15 @@ define(function() {
        // TODOリスト画面に戻る
         backTodoLists : function() {
             Backbone.history.navigate('#todo-lists', true);
+       },
+       
+      // エラー表示
+       renderErrorMessage : function(errors){
+           var message = '';
+           for(var key in errors.validationError){
+               message += errors.validationError[key];
+           }
+           alert(message);
         }
 
     });
