@@ -13,6 +13,7 @@ var require = {
         'underscore' : 'lib/underscore-min',
         'backbone' : 'lib/backbone-min',
         'marionette' : 'lib/backbone.marionette.min',
+	 'bootstrap' : '../bootstrap/js/bootstrap.min'
     },
 
     // ファイルの依存関係を指定
@@ -32,5 +33,8 @@ var require = {
             deps : ['backbone'],
             exports : 'Marionette'
         },
+       'bootstrap' : {
+           deps : ['jquery']
+       }
     }
 };

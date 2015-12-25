@@ -1,0 +1,36 @@
+/* インラインフォーム内を下寄せ(bootstrap設定上書き) */
+@media (min-width: 768px) {
+    .form-inline .input-group {
+      display: inline-block;
+      vertical-align: bottom;
+    }
+}
+
+/* Todo一覧内のボタンの幅 */
+.todo-item-button {
+    width: 70px;
+}
+
+/* その他のボタンの幅 */
+.todo-action-button {
+    width: 120px;
+}
+
+/* テーブル内全て改行、縦中央寄せ */
+.table > tbody > tr > td {
+    word-break: break-all;
+    vertical-align: middle;
+}
+
+/* Todoのフォントサイズを大きく */
+.todo-item-text {
+    font-size: large;
+}
+
+/* ヘッダ部分のレイアウト */
+.header {
+    margin: 5px;
+    padding: 10px 10px 0px 10px;
+    background-color: darkslategray;
+    color: lightcyan;
+}

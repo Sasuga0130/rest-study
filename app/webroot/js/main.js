@@ -2,7 +2,8 @@
 //開始
 console.log('load main');
 require([
-    'marionette'
+    'marionette',
+    'bootstrap'
 ], 
 function(){
     console.log('run main');

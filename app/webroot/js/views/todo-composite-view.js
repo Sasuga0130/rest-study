@@ -15,12 +15,15 @@ define(function(require) {
         ui : {
             addTodo : '#addTodo',
             newTodo : '#new-todo',
-	     userList : '#user-list'
+	     userList : '#user-list',
+           uploadButton : '#uploadButton',
+           uploadFile : '#uploadFile'
         },
 
         events : {
             'click @ui.addTodo' : 'onCreateTodo',
-        },
+       	     'click @ui.uploadButton' : 'onClickUploadButton',
+	 },
 
         initialize: function(options){
             _.bindAll( this, 'onCreatedSuccess' );
@@ -73,7 +76,33 @@ define(function(require) {
                message += errors.validationError[key];
            }
            alert(message);
-       }
+       },
+       onClickUploadButton : function() {
+           var i;
+           var form = new FormData();
+           var files = this.ui.uploadFile[0].files;
+           for ( i = 0; i < files.length; i++) {
+               form.append(i, files[i]);
+           }
+           var that = this;
+           $.ajax({
+               url : "todo_lists/upload.json",
+               type : "POST",
+               data : form,
+               processData : false,
+               contentType : false,
+               dataType : 'json'
+           }).done(function(data) {
+               alert(data);
+           }).always(function(){
+               that.collection.fetch({
+                   reset : true
+               });
+               that.ui.uploadFile.attr('type', 'text');
+               that.ui.uploadFile.attr('type', 'file');
+           });
+           return false;
+       },
     });
 	return TodoCompositeView;
 });

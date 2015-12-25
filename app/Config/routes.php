@@ -70,6 +70,18 @@ Router::connect('/users/signup', array (
    )
 ));
 
+// CSVファイルダウンロード
+Router::Connect('/todo_lists/download', Array(
+   'controller' => 'todo_lists',
+   'action' => 'download',
+   'method' => 'GET'
+));
+// CSVファイルアップロード
+Router::Connect('/todo_lists/upload', Array (
+   'controller' => 'todo_lists',
+   'action' => 'upload',
+   'method' => 'POST'
+));
 
 Router::mapResources(array (
    'todo_lists',
