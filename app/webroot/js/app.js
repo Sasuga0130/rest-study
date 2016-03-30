@@ -6,11 +6,14 @@ define(function(require){
     var UserModel = require('models/user-model');
     var Application = Marionette.Application.extend({
         initialize : function(){
-            console.log('app.initialize');
-            // Ajaxのエラーの共通ハンドラを設定
+      
+	 window.location.search;         
+      console.log('app.initialize'); 
+           // Ajaxのエラーの共通ハンドラを設定
            $(document).ajaxError(function ( e, xhr, options , message ) {
-               window.application.ajaxErrorHandler( e, xhr, options , message );
-           });  
+              
+		 window.application.ajaxErrorHandler( e, xhr, options , message );
+  });
          new Router();
           // ログインユーザ情報をサーバから取得
            this.loginUser = new UserModel();
@@ -23,8 +26,10 @@ define(function(require){
 
         regions : {
 	    headerRegion : '#header',
-            mainRegion : '#main'
+            mainRegion : '#main',
+	    footerRegion : '#footer'
         },
+
 
       // ログインユーザ情報格納用
        loginUser : null,
@@ -84,7 +89,9 @@ define(function(require){
              //  ServerErrorの場合はメッセージ表示
                alert(message);
            }
+
        },
+
     });
     return Application;
 });

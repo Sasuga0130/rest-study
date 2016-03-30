@@ -1,7 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 class TodoListsController extends AppController {
-	private $fields = array (
+/*	private $fields = array (
 		'TodoList.id',
 		'TodoList.todo',
 		'TodoList.status',
@@ -28,7 +28,14 @@ class TodoListsController extends AppController {
 		}
 		$this->set(compact('res'));
 		$this->set('_serialize', 'res');
-	}
+	}*/
+
+
+  public function index() {
+        $res = $this->TodoList->find('all');
+        $this->set(compact('res'));
+        $this->set('_serialize', 'res');
+    }
 	public function view($id = null) {
 		$res = $this->TodoList->findById($id, $this->fields);
 		$this->set(compact('res'));

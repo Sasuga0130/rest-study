@@ -39,7 +39,7 @@ define(function(require) {
 
        // ログイン処理成功時のコールバック
         onLoginSuccess : function(message){
-            Backbone.history.navigate('todo-lists', {trigger: true, replace: true});
+            Backbone.history.navigate('kinniku-lists', {trigger: true, replace: true});
             console.log(message);
         },
 
@@ -76,3 +76,4 @@ define(function(require) {
     });
     return LoginLayoutView;
 });
+

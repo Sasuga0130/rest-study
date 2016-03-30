@@ -1,18 +1,23 @@
-//router
-console.log('load router');
+
+
+
+
 define(function(require) {
-    console.log('run router');
-    var TodoController = require('routers/controller');
-    var TodoRouter = Marionette.AppRouter.extend({
-    //    コントローラをインスタンス化
-        controller: new TodoController(),
-     //   ルーティング設定
-        appRoutes : {
-	    'login'		: 'login',
-            ''                  : 'todoLists',
-            'todo-lists'        : 'todoLists',
-            'todo-lists/:id'    : 'todoDetail'
+	  var KinnikuController = require('routers/controller');  
+           var KinnikuRouter = Marionette.AppRouter.extend({
+               //コントローラをインスタンス化
+              //  console.log("fjdo");
+               controller: new KinnikuController(),
+              // ルーティング設定
+               appRoutes : {
+'login'             : 'login',
+            ''                  : 'kinnikuLists',  
+            'kinniku-lists'        : 'kinnikuLists',  
+           'kinniku-lists/group' : 'kinnikuGroup',
+	   'kinniku-lists/:id' : 'kinnikuDetail'
         },
+
     });
-    return TodoRouter;
+return KinnikuRouter;
 });
+

@@ -1,4 +1,4 @@
-//ヘッダ用ビュー
+///ヘッダ用ビュー
 define(function(require){
     var UserModel = require('models/user-model');
 
@@ -31,3 +31,4 @@ define(function(require){
     });
     return HeaderView;
 });
+

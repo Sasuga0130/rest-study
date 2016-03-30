@@ -1,9 +1,11 @@
+
 <?php
 
 App::uses('AppController', 'Controller');
 App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 class UsersController extends AppController {
+
    public function index() {
        $res = $this->User->find('all', array (
            'fields' => array (
@@ -15,7 +17,6 @@ class UsersController extends AppController {
        $this->set(compact('res'));
        $this->set('_serialize', 'res');
    }
-
 
 
 
@@ -87,4 +88,6 @@ class UsersController extends AppController {
         $this->set('_serialize', 'res');
     }
 
+
 }
+

@@ -1,29 +1,32 @@
-//controller
 console.log('load controller');
 define(function() {
     console.log('run controller');
-    var TodoController = Marionette.Controller.extend({
+    var KinnikuController = Marionette.Controller.extend({
        login : function(){
 //           ログイン画面
            this.nextView('views/login-layout-view', null, true);
        },
 
-        todoLists : function() {
-  //          Todoレイアウト用ビューにルーティング
-            this.nextView('views/todo-layout-view');
+        kinnikuLists : function() {
+   //         Todoレイアウト用ビューにルーティング
+            this.nextView('views/kinniku-layout-view');
+		
         },
-
-        todoDetail : function(id) {
-            this.nextView('views/todo-detail-layout-view', {modelId : id});
+kinnikuGroup : function() {
+            this.nextView('views/footer-layout-view');
         },
+kinnikuDetail : function(id){
+	 this.nextView('views/kinniku-detail-layout-view',{modelId : id});
+},
+        
 
-        nextView : function(viewPath, option,tryShowLoginScreen) {
+               nextView : function(viewPath, option, tryShowLoginScreen) {
            if(window.application.isLoggedIn()){
-         //      ログイン済み
+               //ログイン済み
                if(tryShowLoginScreen){
-           //        ログイン済みなのにログイン画面に遷移しようとしている場合は
-             //      TODOリスト画面にルーティング
-                   Backbone.history.navigate('#todo-lists', {trigger: true, replace: true});
+                 //  ログイン済みなのにログイン画面に遷移しようとしている場合は
+                  // TODOリスト画面にルーティング
+                   Backbone.history.navigate('#kinniku-lists', {trigger: true, replace: true});
                    return;
                }
            }else{
@@ -40,8 +43,6 @@ define(function() {
         //   コンテンツ表示
             require([viewPath], function(View){
                 window.application.mainRegion.show(new View(option));
-
-
             });
         },
        
@@ -59,7 +60,6 @@ define(function() {
            }
        }
        
-
     });
-    return TodoController;
+    return KinnikuController;
 });

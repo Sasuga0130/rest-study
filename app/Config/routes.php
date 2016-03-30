@@ -38,7 +38,9 @@
 /*
  *API
  */
+
 // ログイン
+
 Router::connect('/users/login', array (
    'controller' => 'users',
    'action' => 'login',
@@ -70,6 +72,7 @@ Router::connect('/users/signup', array (
    )
 ));
 
+/*
 // CSVファイルダウンロード
 Router::Connect('/todo_lists/download', Array(
    'controller' => 'todo_lists',
@@ -82,9 +85,9 @@ Router::Connect('/todo_lists/upload', Array (
    'action' => 'upload',
    'method' => 'POST'
 ));
-
+*/
 Router::mapResources(array (
-   'todo_lists',
+   'kinniku_lists',
 ));
 Router::parseExtensions('json');
 

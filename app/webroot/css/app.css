@@ -15,7 +15,41 @@
 .todo-action-button {
     width: 120px;
 }
+p.doit{
+	font-size:large;
+}
+.back-button{
+background: #FF6666;
 
+    border: 1px solid #FF6666;
+
+    border-radius: 20px;
+
+    -moz-border-radius: 20px;
+
+    -webkit-border-radius: 20px;
+
+    color: #000000;
+
+    width: 100px;
+
+    padding: 10px 0;
+
+}
+
+.kinniku-button{
+ background: #09C;
+
+    border: 1px solid #DDD;
+
+    color: #FFF;
+
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.5),-1px -1px 1px rgba(0,0,0,0.5);
+
+    width: 100px;
+
+    padding: 10px 0;
+}
 /* テーブル内全て改行、縦中央寄せ */
 .table > tbody > tr > td {
     word-break: break-all;
@@ -31,6 +65,14 @@
 .header {
     margin: 5px;
     padding: 10px 10px 0px 10px;
-    background-color: darkslategray;
-    color: lightcyan;
+    background-color: lightblue;
+    color: #0000CC;
+}
+
+.main_img {
+	  width:100% ;
+    height: 360px;
+    background: url('https://image.jimcdn.com/app/cms/image/transf/dimension=580x10000:format=png/path/s782d7b71ee8cdc21/image/iadcfd8a1fdc03929/version/1458711133/image.png');
+background-size: cover;
+    background-position: 20% 40%;
 }
